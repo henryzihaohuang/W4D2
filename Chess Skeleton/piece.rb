@@ -1,8 +1,14 @@
 class Piece
 
-  # def initialize
-  #   @value = value
-  # end
+  def initialize(color, position)
+    @color = color
+    @board = board.dup
+    @position = position
+  end
+
+  def moves
+
+  end
 
   def present?
     true
