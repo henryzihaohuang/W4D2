@@ -1,35 +1,35 @@
 class Piece
 
-  def initialize(color, position)
+  def initialize(color, board, position)
     @color = color
-    @board = board.dup
+    @board = board
     @position = position
-  end
-
-  def moves
-
-  end
-
-  def present?
-    true
   end
 
   def to_s
     " x "
   end
-end
 
-class NullPiece < Piece
-
-  def initialize
+  def empty?
 
   end
 
-  def present?
-    false
+  def valid_moves
+
   end
 
-  def to_s
-    "null"
+  def pos=(val)
+    @board[val] = self
   end
+
+  def symbol
+
+  end
+
+  private
+  def move_into_check?(end_pos)
+
+  end
+
+  
 end

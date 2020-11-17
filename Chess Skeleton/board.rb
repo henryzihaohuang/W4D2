@@ -25,6 +25,16 @@ class Board
     end
   end
 
+  def[](pos)
+    x, y = pos
+    @grid
+  end
+
+  def[]=(pos)
+    x, y = pos
+    @grid[x][y] = pos
+  end
+
 
   def move_piece(start_pos, end_pos)
     @grid[end_pos[0]][end_pos[1]] = 'Q'
