@@ -42,9 +42,14 @@ class BestFriend
     @name = name
     @fav_pastime = fav_pastime
     @yrs_known = yrs_known
+    begin
     raise ArgumentError.new("Not A Best Friend !!!") if @yrs_known < 5
-    raise ArgumentError.new("No name was entered") if @name.nil?
-    raise ArgumentError.new("No fav hobby entered") if @fav_pastime.nil?
+    raise ArgumentError.new("No Name Was Entered") if @name.nil?
+    raise ArgumentError.new("No Fav Hobby Entered") if @fav_pastime.nil?
+
+    rescue ArgumentError => e
+      puts "Error was: #{e}"
+    end
   end
 
   def talk_about_friendship
@@ -64,4 +69,4 @@ end
 # convert_to_int("hello")
 # feed_me_a_fruit
 
-friend = BestFriend.new(nil, 6,"Swimming")
+friend = BestFriend.new("Name", 6,"Swimming")
