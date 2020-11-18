@@ -9,6 +9,7 @@
 #   ------------------------- [3,3] right diag [x+1, y+1] left diag [x-1 y+1] downright [x+1, y-1] downleft [x-1 y-1]
 #     0  1  2  3  4  5  6  7
 
+
 module Slideable
     HORIZONTAL_DIRS = [
         [0,1], # up
@@ -44,19 +45,18 @@ module Slideable
 
     private
     def move_dirs
-        raise NotImplementedError # this only executes if
+        raise NotImplementedError 
     end
 
     def grow_unblocked_moves_in_dir(dx, dy)
         moves = []
         pos = self.position
-
         x, y = pos
 
         new_pos = [0,0]
         while new_pos.all?{|coordinate| coordinate.between?(0, 7)} || board[new_pos] == nil
-            new_pos = [x + dx, y + dy]
 
+            new_pos = [x + dx, y + dy]
 
             if board[new_pos] == nil 
                 moves << new_pos
@@ -66,10 +66,7 @@ module Slideable
                 break
             end
             new_pos = moves.last
-            
         end
-
         moves
     end
-    
 end

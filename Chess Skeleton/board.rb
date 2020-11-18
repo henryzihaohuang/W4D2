@@ -10,10 +10,9 @@ require_relative "piece"
 #   -------------------------
 #     0  1  2  3  4  5  6  7
 
-
 class Board
   def initialize(size=8)
-    @grid = Array.new(size) {Array.new(size) {nil} }
+    @grid = Array.new(size) {Array.new(size) {NullPiece.new} }
     @size=size
 
     (0...@grid.length).each do |i|
@@ -22,8 +21,11 @@ class Board
       @grid[1][i] = 'Q'
       @grid[-2][i] = 'Q'
 
+      @null_piece = NullPiece.new
+
     end
   end
+require'byebug'
 
   def[](pos)
     x, y = pos
@@ -40,11 +42,6 @@ class Board
     @grid[end_pos[0]][end_pos[1]] = 'Q'
     @grid[start_pos[0]][start_pos[1]] = nil
 
-    
-
-
-    
-
     if start_pos.empty?
       raise "There is no piece at this position"
     elsif start_pos == end_pos
@@ -56,25 +53,21 @@ class Board
       # start_pos = NullPiece.new
     end
 
-
   end
 
-  def full?
-    @grid.all? do |row|
-      row.all? { |piece| piece.present? }
-    end
+  def valid_pos?(coord)
+    debugger
+    coord.all?{|coordinate| coordinate.between?(0, 7)}
   end
 
-  def mark(pos)
-    x, y = pos
-    @grid[x][y] = Piece.new
+  def add_piece(piece,pos)
+    x,y = pos
+    @grid[pos] = piece
   end
 
-  def in_bounds?(pos)
-    pos.all? { |x| x.between?(0, 2) }
+  def checkmate?(color)
+    
   end
 
-  def rows
-    @grid
-  end
+
 end

@@ -1,4 +1,6 @@
 module Stepable
+    
+    
     def moves
         moves_array = []
         move_diffs.each do |x, y|

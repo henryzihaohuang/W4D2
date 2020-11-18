@@ -1,8 +1,13 @@
 require "colorize"
 require_relative "cursorable"
+require_relative "board"
 
 class Display
+
+  
   include Cursorable
+
+  attr_reader :cursor_pos
 
   def initialize(board)
     @board = board
@@ -39,4 +44,13 @@ class Display
     puts "Arrow keys, WASD, or vim to move, space or enter to confirm."
     build_grid.each { |row| puts row.join }
   end
+end
+
+board = Board.new
+
+display = Display.new(board)
+
+while board.valid_pos?(@cursor_pos)
+  display.render
+  Cursorable.get_input
 end

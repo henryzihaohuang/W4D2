@@ -1,5 +1,7 @@
 require_relative "slideable"
 class Queen < Piece
+    include Slideable
+    
     def symbol
         self.color == :white ? "♕" : "♛"
     end

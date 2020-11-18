@@ -1,4 +1,5 @@
-class Piece
+
+class Piece 
 
   def initialize(color, board, position)
     @color = color
@@ -7,15 +8,15 @@ class Piece
   end
 
   def to_s
-    " x "
+    symbol.to_s
   end
 
   def empty?
-
+    @position == nil
   end
 
   def valid_moves
-
+    moves
   end
 
   def pos=(val)
@@ -23,11 +24,17 @@ class Piece
   end
 
   def symbol
-
+    raise NotImplementedError
   end
 
   private
   def move_into_check?(end_pos)
+    #check if subsequent move ends in game_over
+
+    if @board[position].is_a?(King)
+      print "Check!"
+      return true
+    end
 
   end
 
