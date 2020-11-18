@@ -13,7 +13,7 @@ class NullPiece < Piece
     end
   
     def symbol
-      "null"
+      " "
     end
   
 

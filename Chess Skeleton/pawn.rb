@@ -1,10 +1,10 @@
 class Pawn < Piece
 
     def symbol
-        "♙"
+        self.color == :white ? "♙" : "♟︎"
     end
 
-    def moves
+    def moves_diffs
 
     end
 
